@@ -8,7 +8,7 @@ import keras
 from keras.layers import Input
 from keras import backend as K
 from keras.models import Model
-from keras.utils import plot_model
+from keras.utils.vis_utils import plot_model
 
 import argparse
 import datetime
