@@ -93,16 +93,16 @@ if __name__ == "__main__":
             batch_size = args.batch_size
 
         if not args.is_supervised_noise and args.n_noise_realisations > 0:
-            train_data_unlabel = loadTrainDataWithNoise(batch_size, data_path_="./data", noise_std=args.noise_std, n_noise_realisations=args.n_noise_realisations)
+            train_data_unlabel = loadTrainDataWithNoise(batch_size, data_path_="./IB-semi-supervised-classification/data", noise_std=args.noise_std, n_noise_realisations=args.n_noise_realisations)
         else:
-            train_data_unlabel = loadTrainData(batch_size, data_path_="./data")
+            train_data_unlabel = loadTrainData(batch_size, data_path_="./IB-semi-supervised-classification/data")
 
         if args.supervised_n > 0:
             if args.is_supervised_noise and args.n_noise_realisations > 0:
-                train_data_label = loadTrainDataWithNoise(batch_size, data_path_="./data", noise_std=args.noise_std,
+                train_data_label = loadTrainDataWithNoise(batch_size, data_path_="./IB-semi-supervised-classification/data", noise_std=args.noise_std,
                                                            n_noise_realisations=args.n_noise_realisations, n_use_sample=args.supervised_n)
             else:
-                train_data_label = loadTrainData(batch_size, data_path_="./data", n_use_sample=args.supervised_n)
+                train_data_label = loadTrainData(batch_size, data_path_="./IB-semi-supervised-classification/data", n_use_sample=args.supervised_n)
 
         # --- init models -------------------------------------------------------
         unsupervised_x = Input(shape=(28, 28, 1))
