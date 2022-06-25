@@ -51,16 +51,10 @@ class ModelDecoderBN():
     # init forward pass
     def init(self, inputs):
 
-        self.debug_print(inputs._keras_shape)
-
         x = self.dense1(inputs)
         x = self.act1(x)
 
-        self.debug_print(x._keras_shape)
-
         x   = self.dense_out(x)
         out = self.act_out(x)
-
-        self.debug_print(out._keras_shape)
 
         return Model(inputs, out)
