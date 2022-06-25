@@ -4,10 +4,9 @@ from keras.layers import Conv2D, Conv2DTranspose, Dense, Flatten, Reshape
 from keras.layers import Dropout, BatchNormalization
 from keras.layers import Activation, ReLU, LeakyReLU, Softmax
 
-from libs.BaseModel import BaseModel
 # ======================================================================================================================
 
-class ModelDx(BaseModel):
+class ModelDx():
     def __init__(self, filters = [64, 64, 128, 256], kernel_size = 5):
 
         self.layers = []

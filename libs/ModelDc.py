@@ -6,10 +6,9 @@ from keras.layers import Activation, ReLU, LeakyReLU, Softmax
 
 import sys
 
-from libs.BaseModel import BaseModel
 # ======================================================================================================================
 
-class ModelDc(BaseModel):
+class ModelDc():
     def __init__(self):
 
         self.dense1 = keras.layers.Dense(units=500)

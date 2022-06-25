@@ -6,9 +6,8 @@ from keras.layers import Activation, ReLU, LeakyReLU, Softmax
 
 import sys
 
-from libs.BaseModel import BaseModel
 # ======================================================================================================================
-class ModelDcc(BaseModel):
+class ModelDcc():
     def __init__(self, num_classes=10, layers_conv=[], layers_dense=[], is_bn=False):
 
         self.layers = []

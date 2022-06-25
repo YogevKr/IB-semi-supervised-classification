@@ -7,9 +7,8 @@ from keras import backend as K
 
 import sys
 
-from libs.BaseModel import BaseModel
 # ======================================================================================================================
-class ModelEncoderBN(BaseModel):
+class ModelEncoderBN():
     def __init__(self, layers_conv=[], is_bn=False, dim_a=1024):
 
         self.layers = []
@@ -40,7 +39,7 @@ class ModelEncoderBN(BaseModel):
 
         return Model(inputs, out)
 
-class ModelDecoderBN(BaseModel):
+class ModelDecoderBN():
     def __init__(self, num_classes=10):
 
         self.dense1 = keras.layers.Dense(units=500)

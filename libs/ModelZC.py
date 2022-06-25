@@ -6,10 +6,9 @@ from keras.layers import Activation, ReLU, LeakyReLU, Softmax
 
 import sys
 
-from libs.BaseModel import BaseModel
 # ======================================================================================================================
 # ----- AAE --------------------------------
-class ModelEncoderZC(BaseModel):
+class ModelEncoderZC():
     def __init__(self, layers_conv=[], layers_dense=[],  is_bn=False, dim_z=1024, num_classes=10):
 
         self.layers = []
@@ -62,7 +61,7 @@ class ModelEncoderZC(BaseModel):
 
         return Model(inputs, [z, c])
 
-class ModelReconstructorZC(BaseModel):
+class ModelReconstructorZC():
     def __init__(self, input_layers=128, layers_deconv=[128, 128, 64, 1], image_size=28):
 
         image_resize = image_size // 4
