@@ -16,7 +16,7 @@ import datetime
 from libs.utils import *
 from libs.mnist import MNISTData
 from libs.ModelDc import ModelDc
-from libs.ModelDz import ModelDz
+from libs.ModelDa import ModelDa
 from libs.ModelBN import ModelEncoderBN, ModelDecoderBN
 from libs.ModelDcc import ModelDcc
 from libs.ModelZC import ModelEncoderZC
@@ -92,7 +92,7 @@ if __name__ == "__main__":
         model = Model(unsupervised_x, [Classifier(unsupervised_x),
                                        Dc(Classifier(unsupervised_x))])
     elif args.model_type == "Dcc_Da":
-        Da = ModelDz().init(inputs=Input(shape=(args.dim_z,)))
+        Da = ModelDa().init(inputs=Input(shape=(args.dim_z,)))
         Encoder = ModelEncoderBN(layers_conv=args.conv_filters,
                                  is_bn=args.is_bn,
                                  dim_a=args.dim_a).init(inputs=Input(shape=(28, 28, 1)))
@@ -103,7 +103,7 @@ if __name__ == "__main__":
 
     elif args.model_type == "Dcc_Da_Dc":
         Dc = ModelDc().init(inputs=input_c)
-        Da = ModelDz().init(inputs=Input(shape=(args.dim_z,)))
+        Da = ModelDa().init(inputs=Input(shape=(args.dim_z,)))
         Encoder = ModelEncoderBN(layers_conv=args.conv_filters,
                                  is_bn=args.is_bn,
                                  dim_a=args.dim_a).init(inputs=Input(shape=(28, 28, 1)))

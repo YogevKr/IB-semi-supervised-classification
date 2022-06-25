@@ -14,7 +14,7 @@ import argparse
 import datetime
 
 from libs.utils import *
-from libs.ModelDz import ModelDz
+from libs.ModelDa import ModelDa
 from libs.ModelDc import ModelDc
 from libs.ModelDx import ModelDx
 from libs.ModelZC import ModelEncoderZC, ModelReconstructorZC
@@ -120,7 +120,7 @@ if __name__ == "__main__":
 
         # -----------------------------------------
         # Dz
-        Dz = ModelDz().init(inputs=Input(shape=(args.dim_z,)))
+        Dz = ModelDa().init(inputs=Input(shape=(args.dim_z,)))
         Dz_model = Model(input_z, Dz(input_z))
         Dz_model.compile(loss=keras.losses.binary_crossentropy,
                                  optimizer=keras.optimizers.Adam(learning_rate=args.lr)) # , decay=args.weight_decay
