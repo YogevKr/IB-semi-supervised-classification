@@ -124,21 +124,21 @@ if __name__ == "__main__":
         Dz_model = Model(input_z, Dz(input_z))
         Dz_model.compile(loss=keras.losses.binary_crossentropy,
                                  optimizer=keras.optimizers.Adam(learning_rate=args.lr)) # , decay=args.weight_decay
-        Dz.trainable = False
+        # Dz.trainable = False
 
         # Dc
         Dc = ModelDc().init(inputs=Input(shape=(args.classes,)))
         Dc_model = Model(input_c, Dc(input_c))
         Dc_model.compile(loss=keras.losses.binary_crossentropy,
                          optimizer=keras.optimizers.Adam(learning_rate=args.lr)) # , decay=args.weight_decay
-        Dc.trainable = False
+        # Dc.trainable = False
 
         # Dx
         Dx = ModelDx().init(inputs=Input(shape=(28, 28, 1)))
         Dx_model = Model(unsupervised_x, Dx(unsupervised_x))
         Dx_model.compile(loss=keras.losses.binary_crossentropy,
                          optimizer=keras.optimizers.Adam(learning_rate=args.lr)) # , decay=args.weight_decay
-        Dx.trainable = False
+        # Dx.trainable = False
 
         #  mse
         encoded_z, encoded_c = Encoder(unsupervised_x)
@@ -247,12 +247,12 @@ if __name__ == "__main__":
                 loss = Classifier_model.train_on_batch(x_labeled, [labels, np.random.normal(0, 1, size=[batch_size, args.dim_z])])
                 Loss.append(loss)
 
-            print(f"{datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\t epoch : {epoch}, \t"
-                  f"Dcc = {np.mean(np.asarray(Loss))}\t"
-                  f"Dxx = {np.mean(np.asarray(Loss_mse))}\t"
-                  f"Dx = {np.mean(np.asarray(Loss_Dx))}\t"
-                  f"Dz = {np.mean(np.asarray(Loss_Dz))}\t"
-                  f"Dc = {np.mean(np.asarray(Loss_Dc))}")
+                print(f"{datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\t epoch : {epoch}, \t"
+                    f"Dcc = {np.mean(np.asarray(Loss))}\t"
+                    f"Dxx = {np.mean(np.asarray(Loss_mse))}\t"
+                    f"Dx = {np.mean(np.asarray(Loss_Dx))}\t"
+                    f"Dz = {np.mean(np.asarray(Loss_Dz))}\t"
+                    f"Dc = {np.mean(np.asarray(Loss_Dc))}")
 
             if epoch % save_each == 0 or epoch == args.epochs:
                 # model.save("%s/model_bce_epoch_%d" % (checkpoint_dir_, epoch))
