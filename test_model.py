@@ -62,7 +62,7 @@ def loadTestData(batch_size, data_path_):
 # ======================================================================================================================
 if __name__ == "__main__":
 
-    checkpoint_dir_ = "checkpoints/%s" % args.checkpoint_dir
+    checkpoint_dir_ = args.checkpoint_dir
 
     K.set_learning_phase(0)  # set learning phase: The learning phase flag is a bool tensor (0 = test, 1 = train) to be passed as input to any Keras function that uses a different behavior at train time and test time.
 
