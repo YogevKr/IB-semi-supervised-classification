@@ -124,21 +124,21 @@ if __name__ == "__main__":
         Dz_model = Model(input_z, Dz(input_z))
         Dz_model.compile(loss=keras.losses.binary_crossentropy,
                                  optimizer=keras.optimizers.Adam(learning_rate=args.lr)) # , decay=args.weight_decay
-        # Dz.trainable = False
+        Dz.trainable = False
 
         # Dc
         Dc = ModelDc().init(inputs=Input(shape=(args.classes,)))
         Dc_model = Model(input_c, Dc(input_c))
         Dc_model.compile(loss=keras.losses.binary_crossentropy,
                          optimizer=keras.optimizers.Adam(learning_rate=args.lr)) # , decay=args.weight_decay
-        # Dc.trainable = False
+        Dc.trainable = False
 
         # Dx
         Dx = ModelDx().init(inputs=Input(shape=(28, 28, 1)))
         Dx_model = Model(unsupervised_x, Dx(unsupervised_x))
         Dx_model.compile(loss=keras.losses.binary_crossentropy,
                          optimizer=keras.optimizers.Adam(learning_rate=args.lr)) # , decay=args.weight_decay
-        # Dx.trainable = False
+        Dx.trainable = False
 
         #  mse
         encoded_z, encoded_c = Encoder(unsupervised_x)
